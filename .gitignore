@@ -1,6 +1,6 @@
 /.idea
 /coverage
-/dist
+# /dist
 /node_modules
 /npm-debug.log
 /docs/*
