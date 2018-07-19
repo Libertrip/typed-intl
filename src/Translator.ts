@@ -243,9 +243,9 @@ export function setPreferredLanguage(language: LanguageTag): void {
 /**
  * Polyfill for `navigator.languages`.
  */
-const navigatorLanguages = typeof navigator !== 'undefined' && navigator.languages ?
+const navigatorLanguages = typeof navigator !== 'undefined' ? (navigator.languages ?
     navigator.languages :
-    /* istanbul ignore next: not reachable in test */ (navigator.language ? [navigator.language] : ['en']);
+    /* istanbul ignore next: not reachable in test */ (navigator.language ? [navigator.language] : ['en'])) : ['en'];
 
 /**
  * Sets the [[preferredLanguage]] based on the translations supported by this application and the user's
