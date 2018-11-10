@@ -18,6 +18,14 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
+"@types/browserify@12.0.36":
+  version "12.0.36"
+  resolved "https://registry.yarnpkg.com/@types/browserify/-/browserify-12.0.36.tgz#a7b662550bd4102b38ba83ef4ad6db871ea91331"
+  integrity sha512-hYXvPod5upkYTC7auziOATFsu/0MGxozbzNI80sZV044JTF7UtstHeNOM52b+bg7/taZ3fheK7oeb+jpm4C0/w==
+  dependencies:
+    "@types/insert-module-globals" "*"
+    "@types/node" "*"
+
 "@types/detect-indent@0.1.30":
   version "0.1.30"
   resolved "https://registry.yarnpkg.com/@types/detect-indent/-/detect-indent-0.1.30.tgz#dc682bb412b4e65ba098e70edad73b4833fb910d"
@@ -59,6 +67,13 @@
   version "9.12.3"
   resolved "https://registry.yarnpkg.com/@types/highlight.js/-/highlight.js-9.12.3.tgz#b672cfaac25cbbc634a0fd92c515f66faa18dbca"
   integrity sha512-pGF/zvYOACZ/gLGWdQH8zSwteQS1epp68yRcVLJMgUck/MjEn/FBYmPub9pXT8C1e4a8YZfHo1CKyV8q1vKUnQ==
+
+"@types/insert-module-globals@*":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@types/insert-module-globals/-/insert-module-globals-7.0.0.tgz#8d158de4a6384e8daa13b3d63eebab6d5f67777d"
+  integrity sha512-zudCJPwluh1VUDB6Gl/OQdRp+fYy3+47huJB/JMQubMS2p+sH18MCVK4WUz3FqaWLB12yh5ELxVR/+tqwlm/qA==
+  dependencies:
+    "@types/node" "*"
 
 "@types/intl-locales-supported@1.0.0":
   version "1.0.0"
