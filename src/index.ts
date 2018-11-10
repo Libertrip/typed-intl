@@ -1,33 +1,30 @@
-require('core-js');
+require('core-js')
+
+export { LanguageTag, languageTag } from './LanguageTag'
 
 export {
-    LanguageTag,
-    languageTag
-} from './LanguageTag';
+  LocalizedMessages,
+  MessagesParameter,
+  Language,
+  MessageProvider,
+  Translator,
+  pickPreferredLanguage,
+  preferredLanguage,
+  setPreferredLanguage,
+  selectPreferredLanguage,
+  translate
+} from './Translator'
 
 export {
-    LocalizedMessages,
-    MessagesParameter,
-    Language,
-    MessageProvider,
-    Translator,
-    pickPreferredLanguage,
-    preferredLanguage,
-    setPreferredLanguage,
-    selectPreferredLanguage,
-    translate
-} from './Translator';
-
-export {
-    FormatOptions,
-    formats,
-    setFormats,
-    addFormats,
-    formatObject,
-    format,
-    Plural,
-    plural,
-    SelectOptions,
-    select,
-    selectObject
-} from './Format';
+  FormatOptions,
+  formats,
+  setFormats,
+  addFormats,
+  formatObject,
+  format,
+  Plural,
+  plural,
+  SelectOptions,
+  select,
+  selectObject
+} from './Format'

@@ -109,4 +109,4 @@ export declare function setPreferredLanguage(language: LanguageTag): void;
  * @param availableTranslations the languages this app provides translations for
  * @param usersPreferredLanguages the user's preferred languages ordered by preference (most preferred first).
  */
-export declare function selectPreferredLanguage(availableTranslations: string[], usersPreferredLanguages?: string[]): void;
+export declare function selectPreferredLanguage(availableTranslations: ReadonlyArray<string>, usersPreferredLanguages?: ReadonlyArray<string>): void;

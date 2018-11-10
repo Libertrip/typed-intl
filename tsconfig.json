@@ -3,6 +3,7 @@
     "experimentalDecorators": true,
     "lib": ["es6", "dom"],
     "module": "commonjs",
+    "esModuleInterop": true,
     "target": "es5",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
@@ -10,21 +11,11 @@
     "declaration": true,
     "outDir": "dist",
     "removeComments": false,
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "types": [
-      "@types/node"
-    ]
+    "strict": true,
+    "typeRoots": ["node_modules/@types"]
   },
-  "files": [
-    "src/LanguageTag.ts",
-    "src/Translator.ts",
-    "src/Format.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ],
+  "files": ["src/LanguageTag.ts", "src/Translator.ts", "src/Format.ts"],
+  "exclude": ["node_modules"],
 
   "typedocOptions": {
     "module": "commonjs",

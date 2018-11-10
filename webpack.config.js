@@ -34,7 +34,7 @@ var outputCleanup = function(dir) {
         // outputCleanup recursively
         outputCleanup(filename, false);
       } else {
-        // rm fiilename
+        // rm filename
         fs.unlinkSync(filename);
       }
   }
@@ -49,15 +49,16 @@ var percentage_handler = function handler(percentage, msg) {
     console.log('Build started... Good luck!');
   } else if ( 1.0 === percentage ) {
     // TODO: No Error detection. :(
-    create_browser_version(webpack_opts.output.filename);
+    create_browser_version(libPath(webpack_opts.output.filename));
   }
 }
 
 var webpack_opts = {
+  mode: 'production',
   entry: './src/index.ts',
   target: 'node',
   output: {
-    filename: libPath('index.js'),
+    filename: 'index.js',
     libraryTarget: 'commonjs2'
   },
   resolve: {
@@ -68,7 +69,7 @@ var webpack_opts = {
     ]
   },
   module: {
-    loaders: [
+    rules: [
       {
         enforce: 'pre',
         test: /\.ts$/,
@@ -85,7 +86,6 @@ var webpack_opts = {
   },
   externals: [nodeExternals()],
   plugins: [
-    new webpack.optimize.UglifyJsPlugin(),
     new webpack.LoaderOptionsPlugin({
       options: {
         tslint: {
