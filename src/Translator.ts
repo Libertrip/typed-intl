@@ -23,7 +23,7 @@ function localizedMessages<M extends Messages>(
   if (typeof messages === 'function') {
     return messages as LocalizedMessages<M>
   } else {
-    return (language: LanguageTag) => messages
+    return (_language: LanguageTag) => messages
   }
 }
 

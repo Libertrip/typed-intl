@@ -1,10 +1,8 @@
-var nodeExternals = require('webpack-node-externals')
+import nodeExternals from 'webpack-node-externals'
 import webpack from 'webpack'
 import browserify from 'browserify'
 import path from 'path'
 import fs from 'fs'
-var os = require('os')
-var deleteEmpty = require('delete-empty')
 var PACKAGE_FILE = JSON.parse(fs.readFileSync(path.join(__dirname, 'package.json'), 'utf-8'))
 var LIB_NAME = PACKAGE_FILE.name
 
@@ -105,7 +103,7 @@ var createBrowserVersion = function(inputJs: string) {
     standalone: LIB_NAME
   })
 
-  b.bundle(function(err: unknown, src: Buffer) {
+  b.bundle(function(err: unknown) {
     if (err != null) {
       // tslint:disable-next-line:no-console
       console.error('Browserify error:')

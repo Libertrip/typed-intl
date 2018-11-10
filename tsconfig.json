@@ -11,6 +11,8 @@
     "declaration": true,
     "outDir": "dist",
     "removeComments": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "strict": true,
     "typeRoots": ["node_modules/@types"]
   },
