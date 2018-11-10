@@ -52,7 +52,6 @@
     "@types/webpack": "4.4.18",
     "@types/webpack-node-externals": "1.6.3",
     "browserify": "^16.2.3",
-    "dts-bundle": "^0.7.3",
     "intl": "^1.2.5",
     "intl-locales-supported": "^1.0.0",
     "jest": "^23.6.0",
