@@ -59,6 +59,8 @@ export interface MessageProvider<M extends Messages> {
   messages(): Readonly<M>
 }
 
+export type MessagesOf<T> = T extends Translator<infer M> ? M : never
+
 /**
  * Typesafe builder for a [[MessageProvider]].
  */
