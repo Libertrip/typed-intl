@@ -12,7 +12,8 @@ export {
   preferredLanguage,
   setPreferredLanguage,
   selectPreferredLanguage,
-  translate
+  translate,
+  MessagesOf
 } from './Translator'
 
 export {
