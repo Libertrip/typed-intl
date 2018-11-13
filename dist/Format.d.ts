@@ -104,10 +104,13 @@ export declare function plural(language: LanguageTag, p: Plural): (n: number) =>
  *
  * The `other` case is chosen if non of the more specific cases are matching.
  */
-export interface SelectOptions {
-    [key: string]: string | undefined;
-    other?: string;
-}
+export declare type SelectOptions<K extends string> = {
+    [key in K]: string;
+} | {
+    [key in K]?: string;
+} & {
+    other: string;
+};
 /**
  * Selects a message from [[SelectOptions]] based on the provided selection parameter.
  *
@@ -117,7 +120,11 @@ export interface SelectOptions {
  * @param options the possible cases
  * @returns a function expecting a selection string to pick the correct message from the provided options.
  */
-export declare function select(language: LanguageTag, options: SelectOptions): (selection: string) => string;
+export declare function select(language: LanguageTag, options: {
+    [k: string]: string;
+} & {
+    other?: string;
+}): (selection: string) => string;
 /**
  * Selects and formats a message from [[SelectOptions]] based on the provided parameter object.
  *
@@ -140,4 +147,4 @@ export declare function select(language: LanguageTag, options: SelectOptions): (
  * @returns a function expecting a single parameter object containing the selector and
  *     the values referenced by the messages.
  */
-export declare function selectObject<P>(language: LanguageTag, selector: (parameters: P) => string, options: SelectOptions): (parameters: P) => string;
+export declare function selectObject<P, Q extends string>(language: LanguageTag, selector: (parameters: P) => Q, options: SelectOptions<Q>): (parameters: P) => string;

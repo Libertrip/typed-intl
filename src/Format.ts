@@ -185,10 +185,9 @@ export function plural(language: LanguageTag, p: Plural): (n: number) => string 
  *
  * The `other` case is chosen if non of the more specific cases are matching.
  */
-export interface SelectOptions {
-  [key: string]: string | undefined
-  other?: string
-}
+export type SelectOptions<K extends string> =
+  | { [key in K]: string }
+  | { [key in K]?: string } & { other: string }
 
 /**
  * Selects a message from [[SelectOptions]] based on the provided selection parameter.
@@ -201,9 +200,9 @@ export interface SelectOptions {
  */
 export function select(
   language: LanguageTag,
-  options: SelectOptions
+  options: { [k: string]: string } & { other?: string }
 ): (selection: string) => string {
-  return selectObject<string>(language, selection => selection, options)
+  return selectObject(language, selection => selection, options)
 }
 
 /**
@@ -228,14 +227,14 @@ export function select(
  * @returns a function expecting a single parameter object containing the selector and
  *     the values referenced by the messages.
  */
-export function selectObject<P>(
+export function selectObject<P, Q extends string>(
   language: LanguageTag,
-  selector: (parameters: P) => string,
-  options: SelectOptions
+  selector: (parameters: P) => Q,
+  options: SelectOptions<Q>
 ): (parameters: P) => string {
   const optionsFormat: { [key: string]: (parameters: P) => string } = {}
   for (const option of Object.keys(options)) {
-    const optionMsg = options[option]
+    const optionMsg: string | undefined = options[option as Q]
     if (optionMsg) {
       optionsFormat[option] = formatObject(language, optionMsg)
     }

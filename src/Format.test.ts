@@ -154,7 +154,7 @@ describe('select', () => {
   const outputTypeOptions = {
     error: 'An error occurred',
     warning: 'A warning occured',
-    nop: undefined
+    nop: 'nop'
   }
   const outputType = select(en, outputTypeOptions)
 
@@ -183,7 +183,8 @@ describe('selectObject', () => {
     male: 'Dear Mr. {name}',
     other: 'Dear {name}'
   }
-  const salutation = selectObject<Person>(en, p => p.gender, salutationOptions)
+  const personGender = (p: Person) => p.gender
+  const salutation = selectObject(en, personGender, salutationOptions)
 
   it('must provide the fully formatted option', () => {
     expect(salutation({ gender: 'female', name: 'Granger' })).toBe('Dear Mrs. Granger')
