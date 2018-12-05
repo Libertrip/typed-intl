@@ -13,7 +13,8 @@ export {
   setPreferredLanguage,
   selectPreferredLanguage,
   translate,
-  MessagesOf
+  MessagesOf,
+  mergeRTL
 } from './Translator'
 
 export {
