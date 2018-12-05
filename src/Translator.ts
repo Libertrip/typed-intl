@@ -300,3 +300,56 @@ export function selectPreferredLanguage(
   const pick = pickPreferredLanguage(translations, navLanguages)
   setPreferredLanguage(pick)
 }
+
+export function mergeRTL<M, B>(
+  extension: Translator<M>,
+  base: MessageProvider<B>
+): MessageProvider<B & M>
+export function mergeRTL<M, B1, B2>(
+  extension: Translator<M>,
+  base1: MessageProvider<B1>,
+  base2: MessageProvider<B2>
+): MessageProvider<B2 & B1 & M>
+export function mergeRTL<M, B1, B2, B3>(
+  extension: Translator<M>,
+  base1: MessageProvider<B1>,
+  base2: MessageProvider<B2>,
+  base3: MessageProvider<B3>
+): MessageProvider<B3 & B2 & B1 & M>
+export function mergeRTL<M, B1, B2, B3, B4>(
+  extension: Translator<M>,
+  base1: MessageProvider<B1>,
+  base2: MessageProvider<B2>,
+  base3: MessageProvider<B3>,
+  base4: MessageProvider<B4>
+): MessageProvider<B4 & B3 & B2 & B1 & M>
+export function mergeRTL<M, B1, B2, B3, B4, B5>(
+  extension: Translator<M>,
+  base1: MessageProvider<B1>,
+  base2: MessageProvider<B2>,
+  base3: MessageProvider<B3>,
+  base4: MessageProvider<B4>,
+  base5: MessageProvider<B5>
+): MessageProvider<B5 & B4 & B3 & B2 & B1 & M>
+export function mergeRTL<M, B1, B2, B3, B4, B5, B6>(
+  extension: Translator<M>,
+  base1: MessageProvider<B1>,
+  base2: MessageProvider<B2>,
+  base3: MessageProvider<B3>,
+  base4: MessageProvider<B4>,
+  base5: MessageProvider<B5>,
+  base6: MessageProvider<B6>
+): MessageProvider<B6 & B5 & B4 & B3 & B2 & B1 & M>
+export function mergeRTL<M>(
+  extension: Translator<M>,
+  // tslint:disable-next-line:no-any
+  ...base: MessageProvider<any>[]
+): // tslint:disable-next-line:no-any
+MessageProvider<any> {
+  if (base.length === 1) {
+    return extension.extending(base[0])
+  } else {
+    const mergedBase = base.reduceRight((p, c) => new ExtendingMessageProvider(p, c), base[0])
+    return extension.extending(mergedBase)
+  }
+}

@@ -111,3 +111,9 @@ export declare function setPreferredLanguage(language: LanguageTag): void;
  * @param usersPreferredLanguages the user's preferred languages ordered by preference (most preferred first).
  */
 export declare function selectPreferredLanguage(availableTranslations: ReadonlyArray<string>, usersPreferredLanguages?: ReadonlyArray<string>): void;
+export declare function mergeRTL<M, B>(extension: Translator<M>, base: MessageProvider<B>): MessageProvider<B & M>;
+export declare function mergeRTL<M, B1, B2>(extension: Translator<M>, base1: MessageProvider<B1>, base2: MessageProvider<B2>): MessageProvider<B2 & B1 & M>;
+export declare function mergeRTL<M, B1, B2, B3>(extension: Translator<M>, base1: MessageProvider<B1>, base2: MessageProvider<B2>, base3: MessageProvider<B3>): MessageProvider<B3 & B2 & B1 & M>;
+export declare function mergeRTL<M, B1, B2, B3, B4>(extension: Translator<M>, base1: MessageProvider<B1>, base2: MessageProvider<B2>, base3: MessageProvider<B3>, base4: MessageProvider<B4>): MessageProvider<B4 & B3 & B2 & B1 & M>;
+export declare function mergeRTL<M, B1, B2, B3, B4, B5>(extension: Translator<M>, base1: MessageProvider<B1>, base2: MessageProvider<B2>, base3: MessageProvider<B3>, base4: MessageProvider<B4>, base5: MessageProvider<B5>): MessageProvider<B5 & B4 & B3 & B2 & B1 & M>;
+export declare function mergeRTL<M, B1, B2, B3, B4, B5, B6>(extension: Translator<M>, base1: MessageProvider<B1>, base2: MessageProvider<B2>, base3: MessageProvider<B3>, base4: MessageProvider<B4>, base5: MessageProvider<B5>, base6: MessageProvider<B6>): MessageProvider<B6 & B5 & B4 & B3 & B2 & B1 & M>;

@@ -6,6 +6,7 @@ import {
   selectPreferredLanguage,
   translate
 } from '.'
+import { mergeRTL } from './Translator'
 
 const en = languageTag('en')
 const de = languageTag('de')
@@ -120,5 +121,26 @@ describe('Translator', () => {
     expect(navigator.languages).toEqual(['en-US', 'en'])
     selectPreferredLanguage(['de'])
     expect(preferredLanguage()!.tag).toEqual('en-US')
+  })
+
+  it('merge multiple bases', () => {
+    const t1 = translate({ a: 'a' })
+    const t2 = translate({ b: 'b' })
+    const t3 = translate({ b: 'bb' })
+    const t4 = translate({ a: 'aa', c: 'c' })
+    const t5 = translate({ d: 'd', e: 'e' })
+    const t6 = translate({})
+
+    const m1 = mergeRTL(t1, t2)
+    const m2 = mergeRTL(t1, t2, t3)
+    const m3 = mergeRTL(t1, t2, t3, t4)
+    const m4 = mergeRTL(t1, t2, t3, t4, t5)
+    const m5 = mergeRTL(t1, t2, t3, t4, t5, t6)
+
+    expect(m1.messages().a).toBe('a')
+    expect(m2.messages().b).toBe('b')
+    expect(m3.messages().a).toBe('a')
+    expect(m4.messages().d).toBe('d')
+    expect(m5.messages().e).toBe('e')
   })
 })
