@@ -1,5 +1,3 @@
-require('core-js')
-
 export { LanguageTag, languageTag } from './LanguageTag'
 
 export {
